@@ -1,0 +1,40 @@
+section.how-it-works{
+    background-color: white;
+    box-shadow: 0 8px 6px -6px rgba(191,191,191,0.53);
+    h1.hiw-title{
+        font-size: 3.5em;
+        padding-bottom: 30px;
+    }
+    div.whole{
+        display: flex;
+        align-items: center;
+        div.hiw-text{
+            text-align: center;
+            h1{
+                text-transform: uppercase;
+            }
+        }
+        div.device-mock{
+            display: flex;
+            img.hiw{
+                width: 60%;
+                height: 40%;
+                margin: auto;
+            }
+        }
+    }
+    @media (min-width: 768px) {
+        div.whole{
+            div.hiw-text{
+                text-align: left;
+            }
+            div.device-mock{
+                img.hiw{
+                    margin: initial;
+                    margin-left: auto;
+                }
+            }
+        }
+        
+    }
+}

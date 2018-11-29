@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #f15a24;
+      }
+
+      .cls-2 {
+        fill: #f15a24;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="NARANJA" transform="translate(-828 -461)">
+    <g id="Ellipse_5" data-name="Ellipse 5" class="cls-1" transform="translate(828 461)">
+      <circle class="cls-3" cx="15" cy="15" r="15"/>
+      <circle class="cls-4" cx="15" cy="15" r="14.5"/>
+    </g>
+    <g id="Ellipse_7" data-name="Ellipse 7" class="cls-1" transform="translate(830.727 463.727)">
+      <circle class="cls-3" cx="12.273" cy="12.273" r="12.273"/>
+      <circle class="cls-4" cx="12.273" cy="12.273" r="11.773"/>
+    </g>
+    <circle id="Ellipse_6" data-name="Ellipse 6" class="cls-2" cx="7.909" cy="7.909" r="7.909" transform="translate(835.091 468.636)"/>
+  </g>
+</svg>

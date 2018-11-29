@@ -1,0 +1,35 @@
+
+// Fonts
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~owl.carousel/src/scss/owl.carousel';
+@import '~owl.carousel/src/scss/owl.theme.default';
+@import '~aos/src/sass/aos';
+
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+//custom css
+
+@import "mixins";
+@import "global";
+@import "navbar";
+@import "masthead";
+@import "video";
+@import "how-it-works";
+@import "features";
+@import "plans-and-price";
+@import "screenshots";
+@import "downloads";
+@import "reviews";
+@import "footer";
+@import "login-modal";
+@import "bootstrap-overrides";

@@ -1,0 +1,78 @@
+// Global styling for this template
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+div#app{
+    overflow-x: hidden;
+}
+// html{
+//     overflow-x: hidden;
+// }
+
+body {
+    @include body-font;
+    // overflow-x: hidden !important;
+}
+
+.container-fluid{
+    padding: 0;
+}
+.navbar-nav {
+    margin: 0;
+    padding: 7.5px 15px;
+}
+
+a {
+    color: $theme-primary;
+    @include transition-all;
+    &:hover,
+    &:focus {
+        color: darken($theme-primary, 10%);
+    }
+}
+
+hr {
+    max-width: 100px;
+    margin: 25px auto 0;
+    border-width: 1px;
+    border-color: fade-out($gray-darker, .9);
+}
+
+hr.light {
+    border-color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include heading-font;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+section {
+    padding: 100px 0;
+    h1.title{
+        font-size: 3.5em;
+    }
+    h2 {
+        font-size: 50px;
+    }
+}
+
+span.green-text{
+    color: $theme-green;
+}
+
+span.red-text{
+    color: $theme-red;
+}

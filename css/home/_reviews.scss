@@ -1,0 +1,102 @@
+section.reviews{
+    padding: 0;
+//    height: 80vh;
+    // margin-bottom: 100px;
+    div.title{
+        width: 100%;
+        text-align: center;
+        padding: 45px 0 0 0;
+    }
+    div.owl-stage{
+        margin-top: -185px;
+        margin-bottom: -180px;
+        display: flex;
+        align-items: center;
+        div.owl-item{
+            width: 350px;
+            p{
+                opacity: 0;
+            }
+            img{
+                filter: blur(5px);
+                transition: 1s;
+                margin-top: 100px;
+            }
+        }
+        div.center{
+            margin-bottom: -200px;
+            p.review{
+                opacity: 1;
+                text-align: center;
+                transition: 1s;
+                width: 80%;
+                margin-left: 10%;
+                margin-bottom: -250px;
+            }
+            img.person{
+                transform: scale(.4);
+                filter: blur(0);
+                transition: 1s;
+            }
+        }
+        @media(max-width:425px){
+            margin-top:-167px;
+            margin-bottom: -70px;
+            div.center{
+                p.review{
+                    margin-bottom: -198px;
+                    
+                }
+            }
+        }
+        @media (min-width: 767px){
+            margin-top: -200px;
+            margin-bottom: 30px;
+            div.owl-item{
+                img.person{
+                    padding: 15px;
+                }
+            }
+            div.center{
+                margin-bottom: -200px;
+                p.review{
+                    opacity: 1;
+                    width: 300%;
+                    margin-left: -100%;
+                    margin-bottom: -50px;
+                }
+                img.person{
+                    transform: scale(1.1);
+                    filter: blur(0);
+                }
+            }
+        }
+        @media (min-width: 992px){
+            margin-top: -300px;
+            div.owl-item{
+                img.person{
+                    padding: 0;
+                }
+            }
+            div.center{
+                margin-bottom: -300px;
+            }
+        }
+        @media (min-width: 1260px){
+            margin-top:-250px;
+            margin-bottom: 70px;
+        }
+    }
+}
+
+// @include media-breakpoint-only(md){ 
+//     section.reviews{
+//         div.owl-stage{
+//             margin-top: -250px;
+//             div.center{
+//                 margin-bottom: -280px;
+//             }   
+//         }
+//     }       
+// }
+ 
