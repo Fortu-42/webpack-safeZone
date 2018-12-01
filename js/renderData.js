@@ -47,6 +47,7 @@ module.exports= {
           el.style.width = '25px';
           el.style.height = '25px';
           el.style.backgroundSize = 'cover';
+          el.style.cursor = 'pointer';
           new mapboxgl.Marker(el)
           .setLngLat([marker.Longitude,marker.Latitude])
           .setPopup(
@@ -54,7 +55,8 @@ module.exports= {
             .setHTML(`
               <h5>${marker.Description}</h5>
               <p><b>Usuario:</b> ${marker.Email}</p>
-              <p><b>Fecha:</b> ${marker.Date}</p>
+              <p><b>Fecha:</b> ${marker.Date.slice(0,10).split('-').reverse().join('-')}</p>
+              <p><b>Hora:</b> ${marker.Date.slice(12,19)}
               `)
           )
           .addTo(AlertMap);
@@ -105,9 +107,21 @@ module.exports= {
               <h4 class="no-contacts">No tienes contactos registrados</h4>
             </div>
             `;
-          }else{
-            console.log('jejeps');
-            
+          }else if (data.message_api === "Loadedpost"){
+            var ul = document.createElement('ul');
+            ul.className = 'list-group';
+            data.emails.map(contact => {
+              ul.innerHTML +=
+                `<li class="list-group-item">
+                  <p><b>Nombre:</b> ${contact.Name}</p>
+                  <p><b>Apellido:</b> ${contact.LastName}</p>
+                  <p><b>Email:</b> ${contact.Email}</p>
+                </li>`
+
+                console.log(ul);
+                
+              var list = document.getElementById('modal-body').innerHTML = ul.innerHTML;
+            });
           }
           
         }

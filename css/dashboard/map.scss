@@ -12,6 +12,12 @@ body{
   overflow-y: hidden;
 }
 
+.mapboxgl-popup{
+  p{
+    margin-bottom: 0;
+  }
+}
+
 div.contacts-container{
     display: flex;
     flex-direction: column;

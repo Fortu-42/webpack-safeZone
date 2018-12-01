@@ -186,7 +186,8 @@ function loginSubmission(e){
             { email , password }, 
             function(data) {
               if(data.token){
-            
+                validationError = "Cargando...";
+                document.getElementById('error-login').innerText = validationError;
                 sessionStorage.setItem("token", data.token);
                 sessionStorage.setItem("name", data.name);
                 sessionStorage.setItem("email", email);
@@ -195,7 +196,7 @@ function loginSubmission(e){
               }else if(data.message_api === "Invalid password or email"){
                 console.log(data);
                 validationError = "Email o contraseña incorrecta";
-                document.getElementById('error-login').innerText = validationError;S
+                document.getElementById('error-login').innerText = validationError;
               }
             });
   }

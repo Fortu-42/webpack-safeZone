@@ -1,11 +1,11 @@
 var path = require('path');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var extractPlugin = new MiniCssExtractPlugin({
     filename: '[name].css'
 });
-
 module.exports = {
     entry: {
         main: './js/main.js',
@@ -37,6 +37,23 @@ module.exports = {
                     'css-loader',
                     'sass-loader',
                 ],
+            },
+            {
+                test: /\.html$/,
+                use: ['html-loader']
+            },
+            {
+                test: /\.(jpg|png|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'img/',
+                            publicPath: 'img/'
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -44,6 +61,9 @@ module.exports = {
         extractPlugin,
         new BundleAnalyzerPlugin({
             reportFilename : path.resolve(__dirname, 'dist')
+        }),
+        new HtmlWebpackPlugin({
+            template: './index.html'
         })
     ],
     mode: 'development'
