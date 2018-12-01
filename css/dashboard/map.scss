@@ -12,6 +12,19 @@ body{
   overflow-y: hidden;
 }
 
+div.contacts-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h4.no-contacts{
+      margin: 25px;
+    }
+    i{
+      height: 100px;
+      width: 100px;
+    }
+}
+
 div#wrapper{
   display: flex;
   width: 100%;
