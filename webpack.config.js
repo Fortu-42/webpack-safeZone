@@ -31,16 +31,13 @@ module.exports = {
                 ]
             },
             {
-                test: /\.scss$/,
+                test: /\.(scss|css)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader',
+                    // 'style-loader'
                 ],
-            },
-            {
-                test: /\.html$/,
-                use: ['html-loader']
             },
             {
                 test: /\.(jpg|png|svg)$/,

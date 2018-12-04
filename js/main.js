@@ -73,7 +73,7 @@ import postAjax from './ajax';
     loop:true,
     margin:100,
     center: true,
-    autoplay:false,
+    autoplay:true,
     autoplaySpeed:1000,
     autoplayHoverPause: false,
     mouseDrag: false,

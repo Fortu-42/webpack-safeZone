@@ -1,6 +1,8 @@
 import postAjax from './ajax';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import dayjs from 'dayjs';
+import 'dayjs/locale/es' // load on demand
 
 module.exports= {
     renderMap: function(){
@@ -37,6 +39,7 @@ module.exports= {
         renderMapData,
         sessionStorage.token
         );
+        // .slice(0,10).split('-').reverse().join('-')
 
       function renderMapData(data){
         // markers mapping
@@ -48,15 +51,18 @@ module.exports= {
           el.style.height = '25px';
           el.style.backgroundSize = 'cover';
           el.style.cursor = 'pointer';
+          dayjs().locale('es');
+          var date = dayjs(marker.Date).format('DD-MM-YYYY');
+          var time = dayjs(marker.Date).format('hh:mm:ss A');
           new mapboxgl.Marker(el)
           .setLngLat([marker.Longitude,marker.Latitude])
           .setPopup(
             new mapboxgl.Popup({offset: 15})
             .setHTML(`
-              <h5>${marker.Description}</h5>
-              <p><b>Usuario:</b> ${marker.Email}</p>
-              <p><b>Fecha:</b> ${marker.Date.slice(0,10).split('-').reverse().join('-')}</p>
-              <p><b>Hora:</b> ${marker.Date.slice(12,19)}
+              <h5><i class="em em-male-police-officer"></i> ${marker.Description}</h5>
+              <p><b><i class="em em-email"></i> Usuario:</b> ${marker.Email}</p>
+              <p><b><i class="em em-calendar"></i> Fecha:</b> ${date}</p>
+              <p><b><i class="em em-clock3"></i> Hora:</b> ${time}
               `)
           )
           .addTo(AlertMap);

@@ -3,9 +3,7 @@ import '../css/dashboard/map.scss';
 window.$ = window.jQuery = require('jquery');
 require('jquery.easing');
 require('bootstrap');
-import {renderMap} from './renderData';
-import {renderData} from './renderData';
-import {renderContacts} from './renderData';
+import {renderMap, renderData, renderContacts} from './renderData';
 
 
 if(sessionStorage.token && sessionStorage.name && sessionStorage.email){
