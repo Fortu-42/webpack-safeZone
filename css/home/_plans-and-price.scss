@@ -1,0 +1,57 @@
+section.plans-and-prices{
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1), transparent), url('/img/prices-plans.png') center center no-repeat scroll;
+    background-size: cover;
+    .card{
+        height: 500px;
+    }
+    .price{
+        justify-content: space-evenly;
+    }
+    .pap-con{
+        text-align: center;
+    }
+    div.gray{
+        background-color: $gray-lighter;
+    }
+    div.red{
+        background-color: $theme-red;
+        color: white;
+    }
+    div.yellow{
+        background-color: $yellow;
+    }
+    div.card{
+        margin: 10px;
+    }
+    div.card-head{
+        text-align: center;
+        padding: 20px 0;
+        
+        h5{
+            font-weight: 700;
+        }
+        div.number{
+            display: inline;
+            font-size: 4em;
+        }
+        span.time-lapse{
+            display: block;
+        }
+    }
+    div.card-body{
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0;
+        .card-text{
+            margin: auto 20px;
+            text-align: center;
+        }
+        .btn{
+            border-radius: 0;
+            background-color: $gray-base;
+            color: white;
+        }
+    }
+}

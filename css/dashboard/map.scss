@@ -1,0 +1,232 @@
+// Variables
+@import "../home/variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import url("https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css");
+@import '~@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+
+body{
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.mapboxgl-popup{
+  p{
+    margin-bottom: 0;
+  }
+}
+
+div.contacts-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h4.no-contacts{
+      margin: 25px;
+    }
+    i{
+      height: 100px;
+      width: 100px;
+    }
+}
+
+div#wrapper{
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: $theme-red;
+  div#page-content-wrapper{
+    width: 100%;
+    transition: 0.5s;
+
+    nav{
+      background-color: white;
+      padding: 0;
+      height: 10vh;
+      a.navbar-brand{
+        margin: -20px;
+      }
+      .geocoder {
+        position:absolute;
+        z-index:1;
+        width:50%;
+        left:50%;
+        margin-left:-25%;
+        .mapboxgl-ctrl-geocoder{
+          width: 100%;
+          max-width: inherit;
+        }
+      }
+      // form{
+      //   width: 50%;
+      //   div.form-group{
+      //     margin-bottom: 0;
+      //     input.form-control{
+      //       background-image: url('/svg/search.svg');
+      //       background-size: 30px;
+      //       background-repeat: no-repeat;
+      //       background-position: right;
+      //     }
+      //   }
+      // }
+      ul.navbar-right{
+        opacity: 1;
+        transition: 1s;
+          img{
+            width: 25px;
+          }
+      }
+    }
+
+    div#map{
+      height: 90vh;
+    }
+
+  }
+  div#sidebar-wrapper{
+    opacity: 0;
+    width: 0;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    div.closes{
+      text-align: right;
+      padding-right: 10px;
+      background-color: $theme-red-dark;
+      color: white;
+      position: relative;
+      font-size: 1em;
+      span{
+        cursor: pointer;
+      }
+    }
+    
+    div.sidebar-head{
+      margin-top: -10px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      // justify-content: space-evenly;
+      background-color: $theme-red-dark;
+      color: white;
+      font-size: 1.4em;
+
+      img.profile-img{
+        display: flex;
+        object-fit: contain;
+        width: 20%;
+      }
+      div.sidebar-head-info{
+        width: 70%;
+        padding: 15px 0 0 15px;
+        h3{
+          font-size: 1em;
+        }
+        p{
+          font-size: .6em;
+        }
+      }
+    }
+
+    div.sidebar-body{
+      height: 100%;
+      padding: 40px 0;
+      li{
+        list-style-type: none;
+        margin-left: -30px;
+        a{
+          color: white;
+          font-size: 1.4em;
+        }
+      }
+      .list-icon{
+        width: 20px;
+        margin: 10px;
+      }
+    }
+
+    div.sidebar-footer{
+      background-color: $theme-red-dark;
+      ul{
+        margin-top: 1rem;
+        li{
+          list-style-type: none;
+          margin-left: -30px;
+          a{
+            color: white;
+            font-size: 1.4em;
+          }
+        }
+      }
+      .list-icon{
+        width: 20px;
+        margin: 10px;
+      }
+    }
+  }
+  @media (max-width:425px){
+    div#page-content-wrapper{
+      nav{
+        ul.navbar-left{
+          li{
+            display: none;
+          }
+        }
+        div#geocoder{
+          position: initial;
+          opacity: 1;
+          transition: .5s;
+        }
+      }
+    }
+  }
+}
+
+
+div#wrapper.toggled{
+
+  div#page-content-wrapper{
+    width: 60%;
+     ul.navbar-right{
+       opacity: 0;
+       transition: 1s;
+     }
+  }
+  
+  div#sidebar-wrapper{
+    width: 40%;
+    opacity: 1;
+    transition: 0.5s;
+    height: 100vh;
+
+    // @media (min-width:767px){
+    //   width: 30%;
+    // }
+  }
+  @media(max-width:425px){
+    div#page-content-wrapper{
+      width: 30%;
+      div#geocoder{
+        opacity: 0;
+        transition: .5s;
+      }
+    }
+    div#sidebar-wrapper{
+      width: 70%;
+    }
+  }
+  @media(min-width: 767px){
+    div#page-content-wrapper{
+      width: 70%;
+    }
+    div#sidebar-wrapper{
+      width: 30%;
+    }
+  }
+}
+

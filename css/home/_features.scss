@@ -1,0 +1,114 @@
+section.features{
+    padding-bottom: 0;
+    div.fea-con{
+        text-align: center;
+        h3.sub-heading{
+            margin-top: 50px;
+        }
+    }
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        li{
+            list-style-type: none;
+        }
+    }
+    img.horizontal-mock{
+        margin-top: 50px;
+        width: 100%;
+    }
+}
+
+// icons plus phone mock
+
+
+section.icon-features{
+    padding: 0;
+    background-color: white;
+    .col-xs-12{
+        margin:auto;
+    }
+    div.features-icon-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        box-shadow: 0 8px 6px -6px rgba(191,191,191,1);
+        div.column-text-right{
+            text-align: right;
+            .icon-feature{
+                margin-left: 20px;
+            }
+        }
+        div.column-text{
+            margin: 20px;
+            width: 350px;
+            order:2;
+            div.item-left{
+                div.description{
+                    order:2;
+                }
+                img.icon-feature{
+                    order: 1;
+                }
+            }
+            div.item{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                object-fit: contain;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                text-align: center;            
+                div.description{
+                    width: 70%;
+                    h3.feature-title{
+                        font-size: 22px;
+                    }
+                    p.feature-description{
+                        font-size: 12px;
+                    }
+                }
+                img.icon-feature{
+                    width: 20%;
+                    margin: 0;
+                    padding: 0;
+                    object-fit: contain;
+                }
+            }
+        }
+        img.smartphone-mock{
+            width: 280px;
+            order: 1;
+        }
+    }
+    @media (min-width:1077px){ 
+        div.features-icon-container{
+            div.column-text{
+                order:3;
+                div.item{
+                    flex-direction: row;
+                    text-align: left;
+                }
+                div.item-left{
+                    div.description{
+                        order: 1;
+                        text-align: right;
+                    }
+                    img.icon-feature{
+                        order:2;
+                    }
+                }
+            }
+            div.column{
+                order: 2;
+            }
+            div.column-text-right{
+                order:1;    
+            }
+        }
+    }
+}

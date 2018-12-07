@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ES">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>SafeZone</title>
+
+    <!-- Styles -->
+    <link href="dist/map.css" rel="stylesheet">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    
+</head>
+<body id="page-top">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-default" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a class="navbar-brand" href="/">
+                            <img src="./svg/logo.svg" alt="safeZone-logo" width="100px">
+                        </a>
+                    </li>
+                </ul>
+                    <div id='geocoder' class='geocoder'></div>
+                <ul class="nav navbar-nav navbar-right">
+                    <a class="btn btn-default menu-toggle">
+                        <img src="./svg/hamburguer.svg" alt="hamburguer">
+                    </a>
+                </ul>
+            </nav> 
+            <div id="map"></div>
+                <!-- {{- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> --}} -->
+        </div>
+        <!-- /#page-content-wrapper -->
+        <div id="sidebar-wrapper" class="toggled">
+                <div class="closes menu-toggle"><span>X</span></div>
+            <div class="sidebar-head">
+                    <img src="./img/person.png" alt="profile-image" class="profile-img img-responsive">
+                <div class="sidebar-head-info">
+                    <h3 class="name">Jhon Smith</h3>
+                    <p class="email">jhonsmith@example.com</p>
+                </div>
+            </div>
+            <div class="sidebar-body">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <img src="./svg/refresh-button.svg "alt="list-icon" class="list-icon"><a id="refresh" href="#0">Refresh</a>
+                    </li>
+                    <li class="sidebar-brand">
+                        <img src="./svg/contact.svg" alt="list-icon" class="list-icon"><a href="#" id="contacts" data-toggle="modal" data-target="#exampleModal">Contacts</a>
+                    </li>
+                    <li class="sidebar-brand">
+                        <img src="./svg/arrow-right.svg" alt="list-icon" class="list-icon"><a href="#">Upgrade</a>
+                    </li>
+                    <li class="sidebar-brand">
+                        <img src="./svg/alert.svg" alt="list-icon" class="list-icon"><a id="recent" href="#0">Recently Alert</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar-footer">
+                <ul>
+                    <li>
+                        <img src="./svg/information-circular-button-interface-symbol.svg" alt="list-icon" class="list-icon">
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <img src="./svg/logout.svg" alt="list-icon" class="list-icon">
+                        <a id="logout" href="#">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+            
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Contactos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div id="modal-body" class="modal-body">
+            Cargando...
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="dist/map.js"></script>
+    
+</body>
+</html>
