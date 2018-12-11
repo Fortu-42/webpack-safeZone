@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 71.003">
   <defs>
     <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto');
       .cls-1 {
         fill: #f62d38;
       }
@@ -14,8 +15,8 @@
       }
 
       .cls-4 {
-        font-size: 45px;
-        font-family: SegoeUI-Semibold, Segoe UI;
+        font-size: 35px;
+        font-family: 'Roboto', sans-serif;
         font-weight: 600;
       }
     </style>
