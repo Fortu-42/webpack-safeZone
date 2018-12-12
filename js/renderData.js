@@ -42,6 +42,8 @@ module.exports= {
         // .slice(0,10).split('-').reverse().join('-')
 
       function renderMapData(data){
+        
+        
         // markers mapping
         data.markers.map(marker =>{
           var el = document.createElement('div');
@@ -95,6 +97,10 @@ module.exports= {
             break;
         }
       }
+
+      document.getElementById('userName').innerText = sessionStorage.getItem('name');
+      document.getElementById('userEmail').innerText = sessionStorage.getItem('email');
+      
     },
     renderContacts : function(){
       postAjax(
