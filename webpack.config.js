@@ -51,26 +51,26 @@ module.exports = {
                     }
                 ]
             },
-            // {
-            //     test: /\.(jpg|png|svg|ico)$/,
-            //     use: {
-            //         loader: 'file-loader',
-            //         options: {
-            //             name: "./dist/[path][name].[hash].[ext]",
-            //             context: '',
-            //             useRelativePath: true
-            //         }
-            //     }
-            // },
-            // {
-            //     test: /\.(jpg|png|svg|ico)$/,
-            //     use:{
-            //         loader: 'url-loader?limit=100000',
-            //         options:{
-            //             name: "./dist/[path][name].[hash].[ext]"
-            //         }
-            //     }
-            // }
+            {
+                test: /\.(jpg|png|svg|ico)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: "./dist/[path][name].[hash].[ext]",
+                        context: '',
+                        useRelativePath: true
+                    }
+                }
+            },
+            {
+                test: /\.(jpg|png|svg|ico)$/,
+                use:{
+                    loader: 'url-loader?limit=100000',
+                    options:{
+                        name: "./dist/[path][name].[hash].[ext]"
+                    }
+                }
+            }
         ]
     },
     plugins: [
