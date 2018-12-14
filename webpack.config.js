@@ -74,7 +74,6 @@ module.exports = {
         ]
     },
     plugins: [
-<<<<<<< HEAD
         // new BundleAnalyzerPlugin({
         //     reportFilename : path.resolve(__dirname, 'dist')
         // }),
@@ -97,14 +96,11 @@ module.exports = {
         ]),
         new CopyWebpackPlugin([
             {from: './src/favicon.ico', to: './'}
-        ])
-=======
-        extractPlugin,
+        ]),
+        
         /*new BundleAnalyzerPlugin({
             reportFilename : path.resolve(__dirname, 'dist')
         })*/
-        myHtmlWebpackPlugin
->>>>>>> 55ed170d53233773a116cbd9b17aad7147479e1f
     ],
     mode: 'production'
 };
