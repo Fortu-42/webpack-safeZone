@@ -92,6 +92,9 @@ module.exports = {
           ]),
         new CopyWebpackPlugin([
             {from: './src/svg', to:'./svg'}
+        ]),
+        new CopyWebpackPlugin([
+            {from: './src/favicon.ico', to: './'}
         ])
     ],
     mode: 'production'
