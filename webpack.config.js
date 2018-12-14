@@ -1,23 +1,43 @@
 var path = require('path');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var extractPlugin = new MiniCssExtractPlugin({
     filename: '[name].css'
 });
+
 module.exports = {
     entry: {
-        main: './js/main.js',
-        map: './js/map.js'
+        main: './src/js/main.js',
+        map: './src/js/map.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
-        publicPath: '/dist'
+        publicPath: './'
     },
     module: {
         rules: [
+            {
+                test: /\.(scss|css)$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader?url=false',
+                    'sass-loader',
+                    // 'style-loader'
+                ],
+            },
+            {
+                test: /\.html$/,
+                use: [ {
+                loader: 'html-loader',
+                options: {
+                    attrs: [':data-src']
+                }
+                }]
+            },
             {
                 test: /\.js$/,
                 exclude: /mapbox-gl/,
@@ -30,38 +50,49 @@ module.exports = {
                     }
                 ]
             },
-            {
-                test: /\.(scss|css)$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader',
-                    // 'style-loader'
-                ],
-            },
-            {
-                test: /\.(jpg|png|svg)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[ext]',
-                            outputPath: 'img/',
-                            publicPath: 'img/'
-                        }
-                    }
-                ]
-            }
+            // {
+            //     test: /\.(jpg|png|svg|ico)$/,
+            //     use: {
+            //         loader: 'file-loader',
+            //         options: {
+            //             name: "./dist/[path][name].[hash].[ext]",
+            //             context: '',
+            //             useRelativePath: true
+            //         }
+            //     }
+            // },
+            // {
+            //     test: /\.(jpg|png|svg|ico)$/,
+            //     use:{
+            //         loader: 'url-loader?limit=100000',
+            //         options:{
+            //             name: "./dist/[path][name].[hash].[ext]"
+            //         }
+            //     }
+            // }
         ]
     },
     plugins: [
-        extractPlugin,
-        new BundleAnalyzerPlugin({
-            reportFilename : path.resolve(__dirname, 'dist')
+        // new BundleAnalyzerPlugin({
+        //     reportFilename : path.resolve(__dirname, 'dist')
+        // }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: './src/index.html',
+            chunks: ['main']
         }),
         new HtmlWebpackPlugin({
-            template: './index.html'
-        })
+            filename: 'map.html',
+            template: './src/map.html',
+            chunks: ['map']
+        }),
+        extractPlugin,
+        new CopyWebpackPlugin([
+            { from: './src/img', to: './img' }
+          ]),
+        new CopyWebpackPlugin([
+            {from: './src/svg', to:'./svg'}
+        ])
     ],
-    mode: 'development'
+    mode: 'production'
 };
