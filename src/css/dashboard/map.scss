@@ -18,6 +18,21 @@ body{
   }
 }
 
+div#green-alert{
+  width: 320px;
+  position: absolute;
+  right: 50%;
+  top: 15%;
+  z-index: 99;
+  margin-right: -160px;
+  opacity: 0;
+}
+
+div#green-alert.show{
+  opacity: 1;
+  transition: 1s;
+}
+
 div.contacts-container{
     display: flex;
     flex-direction: column;

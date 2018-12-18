@@ -3,13 +3,13 @@ import '../css/dashboard/map.scss';
 window.$ = window.jQuery = require('jquery');
 require('jquery.easing');
 require('bootstrap');
-import {renderMap, renderData, renderContacts, sendAlert} from './renderData';
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
-
+import {renderMap, renderData, renderContacts} from './renderData';
+import {sendAlert} from './sendData';
 
 if(sessionStorage.token && sessionStorage.name && sessionStorage.email){
-
-  var AlertMap = renderMap();
 
   $(document).ready(function () {
     $(".menu-toggle").click(function (e) {
@@ -17,22 +17,39 @@ if(sessionStorage.token && sessionStorage.name && sessionStorage.email){
       $("#wrapper").toggleClass("toggled");
     });
   });
+  
+  const AlertMap = renderMap();
 
-  window.onload = renderData(AlertMap);
-  // window.renderData = renderData;
+  AlertMap.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true
+    },
+    trackUserLocation: true
+  }));
+
+  var geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      country: 've',
+      language: 'es'
+  });
+
+  document.getElementById('geocoder').appendChild(geocoder.onAdd(AlertMap));
+
+  renderData(AlertMap);
 
   // document.getElementById('refresh').addEventListener('click', (e)=> renderData(AlertMap));
   // document.getElementById('recent').addEventListener('click', (e)=> renderData(AlertMap));
   document.getElementById('contacts').addEventListener('click', (e)=> renderContacts());
-  document.getElementById('panicForm').addEventListener('submit', (e)=> sendAlert(e));
+  document.getElementById('panicForm')
+    .addEventListener('submit', (e)=> {
+      sendAlert(e, AlertMap)
+    });
   document.getElementById('logout')
     	.addEventListener('click', (e)=> { 
         e.preventDefault();
         sessionStorage.clear();
         window.location.assign("/")
       });
-
-
 }else{
   window.location.assign("/");
 }

@@ -194,9 +194,7 @@ function loginSubmission(e){
                 sessionStorage.setItem("name", data.name);
                 sessionStorage.setItem("email", email);
                 window.location.assign("/map.html");
-                console.log(data);
-                
-                
+            
               }else if(data.message_api === "Invalid password or email"){
                 console.log(data);
                 validationError = "Email o contraseña incorrecta";

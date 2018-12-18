@@ -1,6 +1,5 @@
 import postAjax from './ajax';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es'; // load on demand
 
@@ -10,25 +9,10 @@ module.exports= {
         var AlertMap = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/navigation-preview-day-v2?optimize=true',
-        center: [-64.681180,10.176877],
-        zoom: 15
+        center: [-64.689055,10.195041 ],
+        zoom: 14
         });
     
-        AlertMap.addControl(new mapboxgl.GeolocateControl({
-            positionOptions: {
-                enableHighAccuracy: true
-            },
-            trackUserLocation: true
-        }));
-
-        var geocoder = new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            country: 've',
-            language: 'es'
-        });
-    
-        document.getElementById('geocoder').appendChild(geocoder.onAdd(AlertMap));
-
         return AlertMap;
     },
     renderData: function(AlertMap) {
@@ -133,47 +117,5 @@ module.exports= {
           }
           
         }
-    },
-    sendAlert: function(e){
-      e.preventDefault();
-      const Description = e.target[0].value;
-      const idAlert = e.target[1].value;
-      var data = {};
-      var errorMessage = '';
-
-      if(Description == ''){
-        errorMessage = 'Escriba una corta descripción del incidente'
-        document.getElementById('error-span').innerHTML = errorMessage;
-      }else if (idAlert === 'Seleccione el Tipo de Alerta'){
-        errorMessage = 'Por favor seleccione un tipo de alerta';
-        document.getElementById('error-span').innerHTML = errorMessage;
-      }else{
-         window.navigator.geolocation.getCurrentPosition(
-             position => getLocationAndSubmit(position.coords.latitude, position.coords.longitude),
-             err => console.log(err)
-           );
-      }
-
-      function getLocationAndSubmit(Latitude, Longitude){
-          postAjax(
-            'https://api.safezoneapp.io/api/alerts/addalert',
-            'POST',
-            {
-              idAlert,
-              userEmail : sessionStorage.getItem('email'),
-              Latitude,
-              Longitude,
-              Description
-            },
-            notification,
-            sessionStorage.getItem('token')
-          );          
-      }
-
-      function notification(data){
-        console.log(data);
-      }
-      
-
     }
 }
