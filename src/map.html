@@ -8,7 +8,7 @@
     <title>SafeZone</title>
 
     <!-- Styles -->
-    <link href="dist/map.css" rel="stylesheet">
+    <!-- <link href="map.css" rel="stylesheet"> -->
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     
 </head>
@@ -59,6 +59,9 @@
                     <li class="sidebar-brand">
                         <img src="./svg/alert.svg" alt="list-icon" class="list-icon"><a id="recent" href="#0">Recently Alert</a>
                     </li>
+                    <li class="sidebar-brand">
+                        <img src="./svg/alert.svg" alt="create-alert" class="list-icon"><a id="panic" data-toggle="modal" data-target="#exampleModalPanic" href="#0">Create a Panic Alert</a>
+                    </li>
                 </ul>
             </div>
             <div class="sidebar-footer">
@@ -96,8 +99,47 @@
         </div>
         </div>
     </div>
+
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModalPanic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelPanic" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Nueva Alerta</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <form id="panicForm">
+                <div id="modal-body" class="modal-body">
+                    <div class="form-group">
+                        <label for="alertDescription">Descripción de la Alerta</label>
+                        <input value="Secuestro" type="text" class="form-control" id="alertDescription" aria-describedby="AlertHelp" placeholder="Describa el incidente">
+                    </div>
+                    <div class="form-group">
+                        <label for="alertType">Tipo de Alerta</label>
+                        <select class="form-control" id="alertType" placeholder="Describa el incidente">
+                            <option selected>Seleccione el Tipo de Alerta</option>
+                            <option value="0">Robo</option>
+                            <option value="1">Secuestro</option>
+                            <option value="2">Asesinato</option>
+                            <option value="3">Terrorismo</option>
+                            <option value="4">Protesta</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <div id="error-span" style="color:red; width: 100%;"></div>
+                <button id="panicSubmit" type="submit" class="btn btn-primary">Enviar</button>
+            
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
     <!-- Scripts -->
-    <script src="dist/map.js"></script>
+    <!-- <script src="map.js"></script> -->
     
 </body>
 </html>

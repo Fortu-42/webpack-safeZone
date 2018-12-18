@@ -2,7 +2,7 @@ import postAjax from './ajax';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import dayjs from 'dayjs';
-import 'dayjs/locale/es' // load on demand
+import 'dayjs/locale/es'; // load on demand
 
 module.exports= {
     renderMap: function(){
@@ -42,8 +42,6 @@ module.exports= {
         // .slice(0,10).split('-').reverse().join('-')
 
       function renderMapData(data){
-        
-        
         // markers mapping
         data.markers.map(marker =>{
           var el = document.createElement('div');
@@ -129,13 +127,53 @@ module.exports= {
                   <p><b>Apellido:</b> ${contact.LastName}</p>
                   <p><b>Email:</b> ${contact.Email}</p>
                 </li>`
-
-                console.log(ul);
                 
               var list = document.getElementById('modal-body').innerHTML = ul.innerHTML;
             });
           }
           
         }
+    },
+    sendAlert: function(e){
+      e.preventDefault();
+      const Description = e.target[0].value;
+      const idAlert = e.target[1].value;
+      var data = {};
+      var errorMessage = '';
+
+      if(Description == ''){
+        errorMessage = 'Escriba una corta descripción del incidente'
+        document.getElementById('error-span').innerHTML = errorMessage;
+      }else if (idAlert === 'Seleccione el Tipo de Alerta'){
+        errorMessage = 'Por favor seleccione un tipo de alerta';
+        document.getElementById('error-span').innerHTML = errorMessage;
+      }else{
+         window.navigator.geolocation.getCurrentPosition(
+             position => getLocationAndSubmit(position.coords.latitude, position.coords.longitude),
+             err => console.log(err)
+           );
+      }
+
+      function getLocationAndSubmit(Latitude, Longitude){
+          postAjax(
+            'https://api.safezoneapp.io/api/alerts/addalert',
+            'POST',
+            {
+              idAlert,
+              userEmail : sessionStorage.getItem('email'),
+              Latitude,
+              Longitude,
+              Description
+            },
+            notification,
+            sessionStorage.getItem('token')
+          );          
+      }
+
+      function notification(data){
+        console.log(data);
+      }
+      
+
     }
 }

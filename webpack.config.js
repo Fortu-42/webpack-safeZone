@@ -2,8 +2,7 @@ var path = require('path');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var extractPlugin = new MiniCssExtractPlugin({
     filename: '[name].css'
@@ -17,7 +16,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
-        publicPath: './'
+        // publicPath: './'
     },
     module: {
         rules: [
@@ -25,7 +24,7 @@ module.exports = {
                 test: /\.(scss|css)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader?url=false',
+                    'css-loader',
                     'sass-loader',
                     // 'style-loader'
                 ],
@@ -55,28 +54,29 @@ module.exports = {
                 test: /\.(jpg|png|svg|ico)$/,
                 use: {
                     loader: 'file-loader',
-                    options: {
-                        name: "./dist/[path][name].[hash].[ext]",
-                        context: '',
-                        useRelativePath: true
-                    }
+                    // options: {
+                    //     name: "./dist/[path][name].[hash].[ext]",
+                    //     context: '',
+                    //     useRelativePath: true
+                    // }
                 }
             },
             {
                 test: /\.(jpg|png|svg|ico)$/,
                 use:{
                     loader: 'url-loader?limit=100000',
-                    options:{
-                        name: "./dist/[path][name].[hash].[ext]"
-                    }
+                    // options:{
+                    //     name: "./dist/[path][name].[hash].[ext]"
+                    // }
                 }
             }
         ]
     },
     plugins: [
-        // new BundleAnalyzerPlugin({
-        //     reportFilename : path.resolve(__dirname, 'dist')
-        // }),
+        extractPlugin,
+        new BundleAnalyzerPlugin({
+            reportFilename : path.resolve(__dirname, 'dist')
+        }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './src/index.html',
@@ -87,7 +87,6 @@ module.exports = {
             template: './src/map.html',
             chunks: ['map']
         }),
-        extractPlugin,
         new CopyWebpackPlugin([
             { from: './src/img', to: './img' }
           ]),
@@ -96,11 +95,7 @@ module.exports = {
         ]),
         new CopyWebpackPlugin([
             {from: './src/favicon.ico', to: './'}
-        ]),
-        
-        /*new BundleAnalyzerPlugin({
-            reportFilename : path.resolve(__dirname, 'dist')
-        })*/
+        ])
     ],
-    mode: 'production'
+    mode: 'development'
 };
