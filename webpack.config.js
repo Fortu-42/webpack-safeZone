@@ -2,7 +2,7 @@ var path = require('path');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var extractPlugin = new MiniCssExtractPlugin({
     filename: '[name].css'
@@ -73,10 +73,10 @@ module.exports = {
         ]
     },
     plugins: [
-        extractPlugin,
-        new BundleAnalyzerPlugin({
+        extractPlugin
+        /*new BundleAnalyzerPlugin({
             reportFilename : path.resolve(__dirname, 'dist')
-        }),
+        })*/,
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './src/index.html',
@@ -97,5 +97,5 @@ module.exports = {
             {from: './src/favicon.ico', to: './'}
         ])
     ],
-    mode: 'development'
+    mode: 'production'
 };
