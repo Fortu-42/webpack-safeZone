@@ -80,8 +80,8 @@ module.exports= {
         }
       }
 
-      document.getElementById('userName').innerText = sessionStorage.getItem('name');
-      document.getElementById('userEmail').innerText = sessionStorage.getItem('email');
+      document.getElementById('userName').innerText = sessionStorage.name;
+      document.getElementById('userEmail').innerText = sessionStorage.email;
       
     },
     renderContacts : function(){
@@ -102,7 +102,7 @@ module.exports= {
             </div>
             `;
           }else if (data.message_api === "Loadedpost"){
-            var ul = document.createElement('ul');
+            let ul = document.createElement('ul');
             ul.className = 'list-group';
             data.emails.map(contact => {
               ul.innerHTML +=
@@ -112,7 +112,7 @@ module.exports= {
                   <p><b>Email:</b> ${contact.Email}</p>
                 </li>`
                 
-              var list = document.getElementById('modal-body').innerHTML = ul.innerHTML;
+              document.getElementById('modal-body').innerHTML = ul.innerHTML;
             });
           }
           

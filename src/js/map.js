@@ -5,9 +5,11 @@ require('jquery.easing');
 require('bootstrap');
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-
+//import {initializeFirebase} from './pushNotifications';
 import {renderMap, renderData, renderContacts} from './renderData';
 import {sendAlert} from './sendData';
+
+//initializeFirebase();
 
 if(sessionStorage.token && sessionStorage.name && sessionStorage.email){
 
@@ -50,6 +52,10 @@ if(sessionStorage.token && sessionStorage.name && sessionStorage.email){
         sessionStorage.clear();
         window.location.assign("/")
       });
+
+  $('#bNotification').on('closed.bs.alert', function () {
+    alert.innerHTML = '';
+  })
 }else{
   window.location.assign("/");
 }

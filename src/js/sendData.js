@@ -6,9 +6,9 @@ module.exports = {
         e.preventDefault();
         const Description = e.target[0].value;
         const idAlert = e.target[1].value;
-        var data = {};
         var errorMessage = '';
         const message = document.getElementById('error-span');
+        const alert = document.getElementById('bNotification');
   
         if(Description == ''){
 
@@ -42,14 +42,13 @@ module.exports = {
                 Longitude,
                 Description
               },
-              notification,
+              bNotification,
               sessionStorage.token
             );          
         }
   
-        function notification(data){
-          const alert = document.getElementById('notification');
-  
+        function bNotification(data){
+
           if(data.success){
           alert.innerHTML = `
           <div id="green-alert" class="alert alert-success alert-dismissible fade show" role="alert">
@@ -68,11 +67,12 @@ module.exports = {
             </div>`;
           }
         
-          // $('#exampleModalPanic').modal('hide');
+          renderData(alertMap);
+          message.innerText = '';  
+          
         }
 
-        errorMessage = '';
-        renderData(alertMap);
+        
         $('#exampleModalPanic').modal('hide');
         $("#wrapper").toggleClass("toggled");
       }
