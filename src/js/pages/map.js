@@ -1,4 +1,4 @@
-import '../css/dashboard/map.scss';
+import '../../css/dashboard/map.scss';
 
 window.$ = window.jQuery = require('jquery');
 require('jquery.easing');
@@ -6,8 +6,8 @@ require('bootstrap');
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 //import {initializeFirebase} from './pushNotifications';
-import {renderMap, renderData, renderContacts} from './renderData';
-import {sendAlert} from './sendData';
+import {renderMap, renderData, renderContacts} from '../functions/renderData';
+import {sendAlert} from '../functions/sendData';
 
 //initializeFirebase();
 

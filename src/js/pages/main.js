@@ -1,6 +1,6 @@
 
 
-import '../css/home/app.scss';
+import '../../css/home/app.scss';
 
 // window.Popper = require('popper.js').default;
 window.$ = window.jQuery = require('jquery');
@@ -9,7 +9,7 @@ require('bootstrap');
 require('owl.carousel');
 window.aos = require('aos');
 
-import postAjax from './ajax';
+import postAjax from '../utils/ajax';
 
 
 (function($) {

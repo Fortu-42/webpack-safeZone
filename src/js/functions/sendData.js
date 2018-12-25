@@ -1,5 +1,5 @@
 import { renderData} from './renderData';
-import postAjax from './ajax';
+import postAjax from '../utils/ajax';
 
 module.exports = {
     sendAlert: function(e, alertMap){

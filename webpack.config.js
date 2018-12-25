@@ -10,8 +10,8 @@ var extractPlugin = new MiniCssExtractPlugin({
 
 module.exports = {
     entry: {
-        main: './src/js/main.js',
-        map: './src/js/map.js'
+        main: './src/js/pages/main.js',
+        map: './src/js/pages/map.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -73,10 +73,10 @@ module.exports = {
         ]
     },
     plugins: [
-        extractPlugin
+        extractPlugin,
         /*new BundleAnalyzerPlugin({
             reportFilename : path.resolve(__dirname, 'dist')
-        })*/,
+        })*/
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './src/index.html',

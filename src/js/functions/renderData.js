@@ -1,4 +1,4 @@
-import postAjax from './ajax';
+import postAjax from '../utils/ajax';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import dayjs from 'dayjs';
 import 'dayjs/locale/es'; // load on demand
