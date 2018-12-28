@@ -5,11 +5,11 @@ require('jquery.easing');
 require('bootstrap');
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-//import {initializeFirebase} from './pushNotifications';
+// import {initializeFirebase} from '../utils/pushNotifications';
 import {renderMap, renderData, renderContacts} from '../functions/renderData';
 import {sendAlert} from '../functions/sendData';
 
-//initializeFirebase();
+// initializeFirebase();
 
 if(sessionStorage.token && sessionStorage.name && sessionStorage.email){
 
